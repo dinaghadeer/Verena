@@ -31,23 +31,23 @@ const playlist = [
 // Videos + messages
 const videoFiles = [
   {
-    src: "assets/videos/01.mp4",
+    src: "videos/01.mp4",
     message: "الصداقة ليست أن نكون متشابهين، بل أن نبقى معاً رغم كل شيء."
   },
   {
-    src: "assets/videos/02.mp4",
+    src: "videos/02.mp4",
     message: "“Some people are worth melting for.” – Frozen"
   },
   {
-    src: "assets/videos/03.mp4",
+    src: "videos/03.mp4",
     message: "“No matter how far apart we are, you’ll always be with me.” – The Lion King II"
   },
   {
-    src: "assets/videos/04.mp4",
+    src: "videos/04.mp4",
     message: "“We stick together, no matter what.” – Frozen"
   },
   {
-    src: "assets/videos/05.mp4",
+    src: "videos/05.mp4",
     message: "“You don’t have to face the world alone.” – Winnie the Pooh"
   },
   {
@@ -55,32 +55,32 @@ const videoFiles = [
     message: "“That’s what friends do.” – Frozen"
   },
   {
-    src: "assets/videos/07.mp4",
+    src: "videos/07.mp4",
     message: "“When I look at you, I feel like I’m home.” – Finding Nemo / Dory"
   },
   {
-    src: "assets/videos/08.mp4",
+    src: "videos/08.mp4",
     message: "“Our friendship is the best adventure we’ll ever have.” – The Incredibles"
   },
   {
-    src: "assets/videos/09.mp4",
+    src: "videos/09.mp4",
     message: "Our friendship is my favorite story, and I’m thankful for every chapter with you. 💖"
   },
   // If you still have more videos (10..13), add messages or reuse:
   {
-    src: "assets/videos/10.mp4",
+    src: "videos/10.mp4",
     message: "Memory #10 💕"
   },
   {
-    src: "assets/videos/11.mp4",
+    src: "videos/11.mp4",
     message: "Memory #11 ✨"
   },
   {
-    src: "assets/videos/12.mp4",
+    src: "videos/12.mp4",
     message: "Memory #12 💫"
   },
   {
-    src: "assets/videos/13.mp4",
+    src: "videos/13.mp4",
     message: "Memory #13 😂"
   },
 ];
@@ -276,3 +276,4 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.textContent = "Play";
   muteBtn.textContent = "Mute";
 });
+

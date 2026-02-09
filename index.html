@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="top">
+    <h1>Happy Birthday, <span id="name">💗</span></h1>
+    <p class="subtitle">Swipe our memories → </p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="section-title">
+        <h2>Photos</h2>
+        <div class="controls">
+          <button id="playBtn" class="btn">Play</button>
+          <button id="muteBtn" class="btn">Mute</button>
+        </div>
+      </div>
+
+      <!-- Phone-sized viewer (card swipe) -->
+      <div class="phone-view">
+        <div class="viewer" id="viewer">
+          <div class="card-track" id="cardTrack">
+            <img id="photoImg" alt="memory" />
+          </div>
+
+          <div class="overlay">
+            <div id="photoLabel"></div>
+            <div id="songLabel"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <p class="hint">Tip: On iPhone, tap “Play” once to enable music.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>Videos</h2>
+        <p class="small">Tap a video to play. (Background music will pause.)</p>
+      </div>
+      <div class="videos" id="videos"></div>
+    </section>
+
+    <footer class="footer">
+      <p>Made with love 💖</p>
+    </footer>
+  </main>
+
+  <audio id="bgAudio" preload="auto" playsinline></audio>
+  <script src="script.js"></script>
+</body>
+</html>

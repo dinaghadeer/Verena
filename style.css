@@ -1,0 +1,135 @@
+:root {
+  --card: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.14);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.75);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: var(--text);
+  min-height: 100vh;
+  background: radial-gradient(1200px 600px at 10% 10%, #ff4fd8 0%, transparent 55%),
+              radial-gradient(900px 500px at 90% 20%, #6b7bff 0%, transparent 55%),
+              radial-gradient(900px 600px at 50% 95%, #2bffd2 0%, transparent 55%),
+              #070814;
+}
+
+.top { padding: 28px 18px 10px; text-align: center; }
+h1 { margin: 0; font-size: 32px; }
+.subtitle { margin: 10px 0 0; color: var(--muted); }
+
+.container {
+  width: min(980px, 92vw);
+  margin: 0 auto;
+  padding: 16px 0 40px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.section-title h2 { margin: 0; font-size: 20px; }
+.small { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+
+.controls { display: flex; gap: 8px; }
+.btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.btn:active { transform: translateY(1px); }
+
+/* --- Phone-sized viewer (CARD SWIPE, no arrows) --- */
+.phone-view {
+  margin-top: 14px;
+  display: grid;
+  place-items: center;
+}
+
+/* Phone frame */
+.viewer {
+  width: min(360px, 78vw);  /* phone width */
+  aspect-ratio: 9 / 16;     /* phone shape */
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  position: relative;
+  user-select: none;
+  touch-action: pan-y; /* allow vertical scroll; we handle horizontal swipes */
+}
+
+/* The "card" layer that moves with your finger */
+.card-track {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: transform 240ms ease;
+}
+
+.card-track.dragging {
+  transition: none;
+}
+
+/* Image fills the card */
+#photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Instagram story style */
+  display: block;
+}
+
+/* Overlay labels */
+.overlay {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hint { margin: 10px 0 0; color: rgba(255, 255, 255, 0.65); font-size: 13px; }
+
+/* Videos grid */
+.videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.videos video {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.footer { text-align: center; color: rgba(255, 255, 255, 0.7); padding-top: 6px; }

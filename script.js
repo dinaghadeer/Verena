@@ -18,8 +18,6 @@ const photos = [
   { src: "assets/photos/14.jpg" },
   { src: "assets/photos/15.jpg" },
   { src: "assets/photos/16.jpg" },
-  { src: "assets/photos/17.jpg" },
-  { src: "assets/photos/18.jpg" },
 ];
 
 // Playlist
@@ -227,3 +225,4 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.textContent = "Play";
   muteBtn.textContent = "Mute";
 });
+

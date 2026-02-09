@@ -22,10 +22,10 @@ const photos = [
 
 // Playlist
 const playlist = [
-  { src: "assets/songs/01.mp3", name: "Song 1" },
-  { src: "assets/songs/02.mp3", name: "Song 2" },
-  { src: "assets/songs/03.mp3", name: "Song 3" },
-  { src: "assets/songs/04.mp3", name: "Song 4" },
+  { src: "assets/songs/01.mp3", name: "فاكره ؟" },
+  { src: "assets/songs/02.mp3", name: "اخويا ده دههه" },
+  { src: "assets/songs/03.mp3", name: "معايااا اه والله" },
+  { src: "assets/songs/04.mp3", name: "محدش عاش اللي انا وانتي عشناه علفكره" },
 ];
 
 const videoFiles = [
@@ -223,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.textContent = "Play";
   muteBtn.textContent = "Mute";
 });
+
 
 
 

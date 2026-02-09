@@ -42,8 +42,6 @@ const videoFiles = [
   "videos/11.mp4",
   "videos/12.mp4",
   "videos/13.mp4",
-  "videos/14.mp4",
-  "videos/15.mp4",
 ];
 
 function $(id) { return document.getElementById(id); }
@@ -225,5 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.textContent = "Play";
   muteBtn.textContent = "Mute";
 });
+
 
 

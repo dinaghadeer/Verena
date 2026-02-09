@@ -1,4 +1,4 @@
-const FRIEND_NAME = "Verenaaaa💖";
+const FRIEND_NAME = "My Safe Space💖";
 
 // Photos only
 const photos = [
@@ -28,23 +28,66 @@ const playlist = [
   { src: "assets/songs/04.mp3", name: "محدش عاش اللي انا وانتي عشناه علفكره" },
 ];
 
+// Videos + messages
 const videoFiles = [
-  "videos/01.mp4",
-  "videos/02.mp4",
-  "videos/03.mp4",
-  "videos/04.mp4",
-  "videos/05.mp4",
-  "videos/06.mp4",
-  "videos/07.mp4",
-  "videos/08.mp4",
-  "videos/09.mp4",
-  "videos/10.mp4",
-  "videos/11.mp4",
-  "videos/12.mp4",
-  "videos/13.mp4",
+  {
+    src: "assets/videos/01.mp4",
+    message: "الصداقة ليست أن نكون متشابهين، بل أن نبقى معاً رغم كل شيء."
+  },
+  {
+    src: "assets/videos/02.mp4",
+    message: "“Some people are worth melting for.” – Frozen"
+  },
+  {
+    src: "assets/videos/03.mp4",
+    message: "“No matter how far apart we are, you’ll always be with me.” – The Lion King II"
+  },
+  {
+    src: "assets/videos/04.mp4",
+    message: "“We stick together, no matter what.” – Frozen"
+  },
+  {
+    src: "assets/videos/05.mp4",
+    message: "“You don’t have to face the world alone.” – Winnie the Pooh"
+  },
+  {
+    src: "assets/videos/06.mp4",
+    message: "“That’s what friends do.” – Frozen"
+  },
+  {
+    src: "assets/videos/07.mp4",
+    message: "“When I look at you, I feel like I’m home.” – Finding Nemo / Dory"
+  },
+  {
+    src: "assets/videos/08.mp4",
+    message: "“Our friendship is the best adventure we’ll ever have.” – The Incredibles"
+  },
+  {
+    src: "assets/videos/09.mp4",
+    message: "Our friendship is my favorite story, and I’m thankful for every chapter with you. 💖"
+  },
+  // If you still have more videos (10..13), add messages or reuse:
+  {
+    src: "assets/videos/10.mp4",
+    message: "Memory #10 💕"
+  },
+  {
+    src: "assets/videos/11.mp4",
+    message: "Memory #11 ✨"
+  },
+  {
+    src: "assets/videos/12.mp4",
+    message: "Memory #12 💫"
+  },
+  {
+    src: "assets/videos/13.mp4",
+    message: "Memory #13 😂"
+  },
 ];
 
-function $(id) { return document.getElementById(id); }
+function $(id) {
+  return document.getElementById(id);
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   $("name").textContent = FRIEND_NAME;
@@ -102,7 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
   async function playCurrentSong() {
     if (!playlist.length) return;
     if (!bgAudio.src) loadSong(0);
-    try { await bgAudio.play(); } catch (e) {}
+    try {
+      await bgAudio.play();
+    } catch (e) {
+      // Autoplay blocked on mobile until user clicks Play (normal)
+    }
   }
 
   bgAudio.addEventListener("ended", () => {
@@ -113,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   playBtn.addEventListener("click", async () => {
     userUnlockedAudio = true;
+
     if (bgAudio.paused) {
       if (!bgAudio.src) loadSong(0);
       await playCurrentSong();
@@ -128,10 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
     muteBtn.textContent = bgAudio.muted ? "Unmute" : "Mute";
   });
 
-  // ---------- Videos ----------
-  videoFiles.forEach((src) => {
+  // ---------- Videos (with messages) ----------
+  videoFiles.forEach((item) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "video-item";
+
     const v = document.createElement("video");
-    v.src = src;
+    v.src = item.src;
     v.controls = true;
     v.playsInline = true;
 
@@ -140,7 +191,13 @@ document.addEventListener("DOMContentLoaded", () => {
       playBtn.textContent = "Play";
     });
 
-    videosEl.appendChild(v);
+    const caption = document.createElement("p");
+    caption.className = "video-caption";
+    caption.textContent = item.message || "";
+
+    wrapper.appendChild(v);
+    wrapper.appendChild(caption);
+    videosEl.appendChild(wrapper);
   });
 
   // ---------- Card Swipe (drag with finger) ----------
@@ -149,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let dragging = false;
 
   const SWIPE_THRESHOLD = 80; // px
-  const ROTATE_FACTOR = 12;   // deg max
+  const ROTATE_FACTOR = 12; // deg max
 
   function setTransform(dx) {
     const w = viewer.getBoundingClientRect().width;
@@ -159,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function resetCard() {
     cardTrack.classList.remove("dragging");
-    cardTrack.style.transform = `translateX(0px) rotate(0deg)`;
+    cardTrack.style.transform = "translateX(0px) rotate(0deg)";
   }
 
   function animateOut(direction) {
@@ -168,7 +225,6 @@ document.addEventListener("DOMContentLoaded", () => {
     cardTrack.classList.remove("dragging");
     cardTrack.style.transform = `translateX(${direction * w * 1.2}px) rotate(${direction * 18}deg)`;
 
-    // after animation, switch photo + reset
     setTimeout(() => {
       if (direction === -1) nextPhoto();
       else prevPhoto();
@@ -196,23 +252,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const dx = currentX - startX;
     if (dx <= -SWIPE_THRESHOLD) {
-      // swipe left -> next
       animateOut(-1);
     } else if (dx >= SWIPE_THRESHOLD) {
-      // swipe right -> prev
       animateOut(1);
     } else {
-      // not enough -> snap back
       resetCard();
     }
   }
 
-  // Touch events
+  // Touch
   viewer.addEventListener("touchstart", (e) => onStart(e.touches[0].clientX), { passive: true });
   viewer.addEventListener("touchmove", (e) => onMove(e.touches[0].clientX), { passive: true });
   viewer.addEventListener("touchend", onEnd, { passive: true });
 
-  // Mouse events (desktop)
+  // Mouse (desktop)
   viewer.addEventListener("mousedown", (e) => onStart(e.clientX));
   window.addEventListener("mousemove", (e) => onMove(e.clientX));
   window.addEventListener("mouseup", onEnd);
@@ -223,7 +276,3 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.textContent = "Play";
   muteBtn.textContent = "Mute";
 });
-
-
-
-

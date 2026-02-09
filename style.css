@@ -131,5 +131,27 @@ h1 { margin: 0; font-size: 32px; }
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(0, 0, 0, 0.25);
 }
+.spotify-qr {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.spotify-qr img {
+  width: 140px;        /* phone-friendly */
+  max-width: 45vw;
+  border-radius: 14px;
+  background: white;  /* makes Spotify QR readable */
+  padding: 8px;
+}
+
+.spotify-qr p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.85);
+}
 
 .footer { text-align: center; color: rgba(255, 255, 255, 0.7); padding-top: 6px; }
+

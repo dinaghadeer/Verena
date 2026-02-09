@@ -152,6 +152,21 @@ h1 { margin: 0; font-size: 32px; }
   font-size: 13px;
   color: rgba(255,255,255,.85);
 }
+.video-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.video-caption {
+  margin: 0;
+  font-size: 13px;
+  text-align: center;
+  color: rgba(255,255,255,.85);
+  font-style: italic;
+}
+
 
 .footer { text-align: center; color: rgba(255, 255, 255, 0.7); padding-top: 6px; }
+
 
